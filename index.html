@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rtlavkush</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Using a custom font and some base styling */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #111827; /* bg-gray-900 */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+      /* Style for the typing caret */
+      .type-caret {
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* =========================================
+         LIGHT MODE OVERRIDES 
+         ========================================= */
+      html.light-mode body,
+      html.light-mode section,
+      html.light-mode main,
+      html.light-mode footer {
+        background-color: #f8fafc !important; /* Clean off-white professional bg */
+        color: #0f172a !important;
+      }
+      html.light-mode .bg-gray-900,
+      html.light-mode .bg-gray-800 {
+        background-color: #ffffff !important;
+      }
+      html.light-mode .bg-gray-900\/30 {
+        background-color: rgba(255, 255, 255, 0.85) !important;
+      }
+      html.light-mode .text-white,
+      html.light-mode h1,
+      html.light-mode h2,
+      html.light-mode h3 {
+        color: #0f172a !important;
+      }
+      html.light-mode .text-gray-300,
+      html.light-mode .text-gray-400,
+      html.light-mode p {
+        color: #475569 !important;
+      }
+      html.light-mode .bg-black {
+        opacity: 0.03 !important;
+      }
+      html.light-mode .border-gray-700 {
+        border-color: #e2e8f0 !important;
+      }
+      html.light-mode .bg-gray-700 {
+        background-color: #f1f5f9 !important;
+        color: #1e293b !important;
+      }
+      html.light-mode .bg-gray-700\/50 {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+      }
+      html.light-mode .hover\:bg-gray-600\/50:hover {
+        background-color: #cbd5e1 !important;
+      }
+      html.light-mode .bg-blue-900\/50 {
+        background-color: #dbeafe !important;
+      }
+      html.light-mode .text-blue-300 {
+        color: #1d4ed8 !important;
+      }
+      html.light-mode .shadow-xl {
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.05),
+          0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+      }
+      /* Project Media Border in Light Mode */
+      html.light-mode .project-media-container {
+        border-right-color: #e2e8f0 !important;
+        background-color: #f8fafc !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header
+      id="header"
+      class="bg-gray-900/30 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent dark:border-gray-800"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="text-2xl font-bold text-white transition-colors duration-300 hover:text-blue-400"
+        >
+          Lav Kumar
+        </a>
+
+        <div class="flex items-center space-x-4 md:space-x-8">
+          <!-- Desktop Nav -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#about"
+              class="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              >About</a
+            >
+            <a
+              href="#experience"
+              class="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              >Education</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              >Projects</a
+            >
+            <a
+              href="#skills"
+              class="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              >Skills</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- THEME TOGGLE BUTTON (Professional SVGs) -->
+          <button
+            id="themeToggleBtn"
+            class="text-gray-300 hover:text-blue-400 transition-colors focus:outline-none p-2 rounded-full hover:bg-gray-800/50"
+            aria-label="Toggle Dark/Light Mode"
+          >
+            <!-- Moon Icon (Default for Dark Mode) -->
+            <svg
+              id="moonIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="block"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun Icon (Hidden initially) -->
+            <svg
+              id="sunIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="hidden"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- MOBILE HAMBURGER BUTTON -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden text-gray-300 hover:text-blue-400 focus:outline-none p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE DRAWER MENU -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-gray-900 border-t border-gray-800 shadow-2xl py-4 flex flex-col px-6 space-y-4"
+      >
+        <a
+          href="#about"
+          class="mobile-link text-gray-300 hover:text-blue-400 font-medium text-lg"
+          >About</a
+        >
+        <a
+          href="#experience"
+          class="mobile-link text-gray-300 hover:text-blue-400 font-medium text-lg"
+          >Education</a
+        >
+        <a
+          href="#projects"
+          class="mobile-link text-gray-300 hover:text-blue-400 font-medium text-lg"
+          >Projects</a
+        >
+        <a
+          href="#skills"
+          class="mobile-link text-gray-300 hover:text-blue-400 font-medium text-lg"
+          >Skills</a
+        >
+        <a
+          href="#contact"
+          class="mobile-link text-gray-300 hover:text-blue-400 font-medium text-lg"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        id="hero"
+        class="min-h-screen flex flex-col justify-center bg-gray-900 relative pt-20"
+      >
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <!-- Animated background -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+          <div class="absolute h-full w-full bg-gray-900">
+            <div
+              class="absolute bottom-0 left-[-20%] right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(37,99,235,.15),rgba(255,255,255,0))]"
+            ></div>
+            <div
+              class="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(37,99,235,.15),rgba(255,255,255,0))]"
+            ></div>
+          </div>
+        </div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+          <h2 class="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
+            Hi, I'm Lav
+          </h2>
+          <h1
+            class="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+          >
+            <span class="text-blue-500" id="animated-text"></span
+            ><span class="type-caret">|</span>
+          </h1>
+          <p class="max-w-3xl mx-auto mt-6 text-lg text-gray-400">
+            I’m a Software Engineer who loves turning complex problems into
+            simple, elegant solutions.
+          </p>
+
+          <!-- Primary Buttons -->
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:rtlavkush.me@gmail.com"
+              class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-lg hover:scale-105"
+            >
+              Email
+            </a>
+            <a
+              href="https://tinyurl.com/2s3b4853"
+              class="bg-gray-700/50 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-gray-600/50 hover:shadow-lg hover:scale-105"
+            >
+              My Resume/CV
+            </a>
+          </div>
+
+          <!-- Coding Profiles / Social Links -->
+          <div
+            class="mt-8 flex justify-center items-center space-x-6 flex-wrap gap-y-4"
+          >
+            <p
+              class="text-gray-400 text-sm font-medium uppercase tracking-wider hidden md:block"
+            >
+              Coding Profiles:
+            </p>
+
+            <!-- LeetCode -->
+            <a
+              href="https://leetcode.com/u/rtlavkush/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-400 hover:text-yellow-500 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M21.6 14.1h-9.3c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2h9.3c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2ZM6.7 21.9c-1.8 0-3.5-.7-4.7-2-2.6-2.6-2.6-6.8 0-9.4l7.4-7.4c2.6-2.6 6.8-2.6 9.4 0l1.6 1.6-1.7 1.7-1.6-1.6c-1.6-1.6-4.2-1.6-5.8 0l-7.4 7.4c-1.6 1.6-1.6 4.2 0 5.8 1.6 1.6 4.2 1.6 5.8 0l2.2-2.2 1.7 1.7-2.2 2.2c-1.3 1.3-3 2-4.7 2Z"
+                />
+              </svg>
+              <span>LeetCode</span>
+            </a>
+
+            <!-- GeeksforGeeks -->
+            <a
+              href="https://www.geeksforgeeks.org/profile/rtlavkush_07"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-400 hover:text-green-500 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3v18"></path>
+                <path d="M5 8c2-3 5-5 7-5s5 2 7 5"></path>
+                <path d="M5 16c2 3 5 5 7 5s5-2 7-5"></path>
+                <path d="M7 12h10"></path>
+              </svg>
+              <span>GFG</span>
+            </a>
+
+            <!-- Codeforces -->
+            <a
+              href="https://codeforces.com/profile/rtlavkush"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="12" cy="7" r="3"></circle>
+                <circle cx="18" cy="12" r="3"></circle>
+              </svg>
+              <span>Codeforces</span>
+            </a>
+
+            <!-- GitHub -->
+            <a
+              href="https://github.com/rtlavkush07"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.7.8-1.2 1.9-1.2 3.2 0 4.6 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"
+                ></path>
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/lav-kumar-nit/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-400 hover:text-blue-500 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-white mb-12">
+            About Me
+          </h2>
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3">
+              <div
+                class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-blue-500/50"
+              >
+                <img
+                  src="profile.jpg"
+                  alt="Portrait of Lav Kumar"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <h1 class="text-3xl font-bold text-white">Lav Kumar</h1>
+            <div
+              class="md:w-2/3 text-lg text-gray-300 text-center md:text-left"
+            >
+              <p class="mb-6">
+                I’m Lav, a Software Engineer passionate about building scalable
+                software and solving challenging problems. With a strong
+                foundation in Data Structures, Algorithms, Computer Science
+                fundamentals, and full-stack development, I enjoy turning ideas
+                into practical and efficient solutions. I’ve worked across
+                enterprise software and embedded software automation, gaining
+                hands-on experience with technologies like Java, Spring Boot,
+                React, Node.js, Python, C/C++, Linux, and databases. I’m
+                constantly curious about new technologies.
+              </p>
+              <p>
+                I enjoy building both front-end and back-end systems, turning
+                complex ideas into simple and effective designs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="experience" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-white mb-16">
+            Education
+          </h2>
+          <div class="relative max-w-3xl mx-auto">
+            <!-- Vertical line -->
+            <div
+              class="absolute left-3 md:left-1/2 md:-translate-x-1/2 h-full w-1 bg-gray-700 rounded"
+            ></div>
+
+            <!-- Experience Item 1 (Right Side) -->
+            <div class="mb-12 relative md:flex md:justify-end">
+              <div
+                class="absolute w-6 h-6 bg-gray-800 rounded-full left-0 md:left-1/2 md:-translate-x-1/2 border-[3px] border-blue-500"
+              ></div>
+              <div class="ml-12 md:ml-0 md:w-1/2 md:pl-10">
+                <div
+                  class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-500 hover:scale-105"
+                >
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    Master of Computer Applications (MCA)
+                  </h3>
+                  <h3 class="text-l text-white mb-2">NIT ALLAHABAD</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Item 2 (Left Side) -->
+            <div class="mb-12 relative md:flex md:justify-start">
+              <div
+                class="absolute w-6 h-6 bg-gray-800 rounded-full left-0 md:left-1/2 md:-translate-x-1/2 border-[3px] border-blue-500"
+              ></div>
+              <div class="ml-12 md:ml-0 md:w-1/2 md:pr-10">
+                <div
+                  class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-500 hover:scale-105"
+                >
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    Bachelor of Computer Applications (BCA)
+                  </h3>
+                  <h3 class="text-l text-white mb-2">
+                    Magadh University Bodh Gaya, Bihar
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Item 3 (Right Side) -->
+            <div class="mb-12 relative md:flex md:justify-end">
+              <div
+                class="absolute w-6 h-6 bg-gray-800 rounded-full left-0 md:left-1/2 md:-translate-x-1/2 border-[3px] border-blue-500"
+              ></div>
+              <div class="ml-12 md:ml-0 md:w-1/2 md:pl-10">
+                <div
+                  class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-500 hover:scale-105"
+                >
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    Intermediate (12th)
+                  </h3>
+                  <h3 class="text-l text-white mb-2">
+                    Anugrah Inter College, Aurangabad, Bihar
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Item 4 (Left Side) -->
+            <div class="mb-12 relative md:flex md:justify-start">
+              <div
+                class="absolute w-6 h-6 bg-gray-800 rounded-full left-0 md:left-1/2 md:-translate-x-1/2 border-[3px] border-blue-500"
+              ></div>
+              <div class="ml-12 md:ml-0 md:w-1/2 md:pr-10">
+                <div
+                  class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700 transform transition-transform duration-500 hover:scale-105"
+                >
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    Matric (10th)
+                  </h3>
+                  <h3 class="text-l text-white mb-2">
+                    R.J. High School Deo, Aurangabad, Bihar
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section (UPDATED LAYOUT: Media Left, Content Right) -->
+      <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+          <h2 class="text-4xl font-bold text-center text-white mb-16">
+            Popular Projects
+          </h2>
+          <div class="grid grid-cols-1 gap-12">
+            <!-- Project 1 -->
+            <div
+              class="bg-gray-800 rounded-xl overflow-hidden shadow-xl flex flex-col md:flex-row group border border-gray-700"
+            >
+              <!-- Left: Video/Demo Area -->
+              <div
+                class="project-media-container md:w-5/12 bg-gray-900 border-r border-gray-700 relative min-h-[250px] flex items-center justify-center p-4"
+              >
+                <!-- Placeholder for Video/Image -->
+                <div class="text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="mx-auto h-12 w-12 text-gray-600 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-gray-500 text-sm font-medium"
+                    >Video/Demo Space<br />(Add iframe or img here)</span
+                  >
+                </div>
+              </div>
+              <!-- Right: Content Area -->
+              <div class="md:w-7/12 p-8 flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-white mb-3">
+                  Aura Tracker (Gamify the study)
+                </h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                  Developed a gamified platform for students to track
+                  assignments and earn rewards. Implemented role-based
+                  dashboards and leaderboards for engagement.
+                </p>
+                <div class="mb-8 flex flex-wrap gap-2">
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >Node.js</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >MongoDB</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >Express.js</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >JWT</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://github.com/rtlavkush07/Aura-Tracker-Student-study-management-app-"
+                    target="_blank"
+                    class="flex items-center gap-2 bg-gray-700/50 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.7.8-1.2 1.9-1.2 3.2 0 4.6 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"
+                      ></path>
+                    </svg>
+                    Code
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div
+              class="bg-gray-800 rounded-xl overflow-hidden shadow-xl flex flex-col md:flex-row group border border-gray-700"
+            >
+              <div
+                class="project-media-container md:w-5/12 bg-gray-900 border-r border-gray-700 relative min-h-[250px] flex items-center justify-center p-4"
+              >
+                <div class="text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="mx-auto h-12 w-12 text-gray-600 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-gray-500 text-sm font-medium"
+                    >Video/Demo Space</span
+                  >
+                </div>
+              </div>
+              <div class="md:w-7/12 p-8 flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-white mb-3">
+                  ChatWaves (Real-time chat app)
+                </h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                  Built a MERN-based chat app with one-on-one messaging and
+                  real-time updates. Enabled secure login, instant delivery, and
+                  notifications.
+                </p>
+                <div class="mb-8 flex flex-wrap gap-2">
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >Websocket</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >Node.js</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >MongoDB</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://github.com/rtlavkush07/ChatWaves-Real-time-chat-app-"
+                    target="_blank"
+                    class="flex items-center gap-2 bg-gray-700/50 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.7.8-1.2 1.9-1.2 3.2 0 4.6 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"
+                      ></path>
+                    </svg>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div
+              class="bg-gray-800 rounded-xl overflow-hidden shadow-xl flex flex-col md:flex-row group border border-gray-700"
+            >
+              <div
+                class="project-media-container md:w-5/12 bg-gray-900 border-r border-gray-700 relative min-h-[250px] flex items-center justify-center p-4"
+              >
+                <div class="text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="mx-auto h-12 w-12 text-gray-600 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-gray-500 text-sm font-medium"
+                    >Video/Demo Space</span
+                  >
+                </div>
+              </div>
+              <div class="md:w-7/12 p-8 flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-white mb-3">
+                  Spend-Smartly (Expense Tracker)
+                </h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                  Built a responsive expense tracker with add/edit/delete and
+                  budget alerts. Used Context API + LocalStorage for state
+                  persistence and insights.
+                </p>
+                <div class="mb-8 flex flex-wrap gap-2">
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >HTML/CSS</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    >LocalStorage</span
+                  >
+                </div>
+                <div class="flex gap-4">
+                  <a
+                    href="https://github.com/rtlavkush07/Smart-Expense-Tracker"
+                    target="_blank"
+                    class="flex items-center gap-2 bg-gray-700/50 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.7.8-1.2 1.9-1.2 3.2 0 4.6 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"
+                      ></path>
+                    </svg>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section (UPDATED WITH ICONS) -->
+      <section id="skills" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-white mb-12">
+            Technical Skills
+          </h2>
+
+          <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+            <!-- DSA -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 mr-3 text-blue-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              Data Structures & Algorithms
+            </div>
+
+            <!-- C++ -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                alt="C++"
+                class="w-5 h-5 mr-3"
+              />
+              C++
+            </div>
+
+            <!-- Java -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                alt="Java"
+                class="w-5 h-5 mr-3"
+              />
+              Java
+            </div>
+
+            <!-- Python -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
+                class="w-5 h-5 mr-3"
+              />
+              Python
+            </div>
+
+            <!-- JavaScript -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+                class="w-5 h-5 mr-3"
+              />
+              JavaScript
+            </div>
+
+            <!-- TypeScript -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                alt="TypeScript"
+                class="w-5 h-5 mr-3"
+              />
+              TypeScript
+            </div>
+
+            <!-- React -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                alt="React"
+                class="w-5 h-5 mr-3"
+              />
+              React.js
+            </div>
+
+            <!-- Tailwind -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                alt="Tailwind CSS"
+                class="w-5 h-5 mr-3"
+              />
+              Tailwind CSS
+            </div>
+
+            <!-- Node -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                alt="Node.js"
+                class="w-5 h-5 mr-3"
+              />
+              Node.js
+            </div>
+
+            <!-- Express -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                alt="Express.js"
+                class="w-5 h-5 mr-3 invert"
+              />
+              Express.js
+            </div>
+
+            <!-- Spring Boot -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                alt="Spring Boot"
+                class="w-5 h-5 mr-3"
+              />
+              Spring Boot
+            </div>
+
+            <!-- REST APIs -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 mr-3 text-green-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 7h16M4 12h16M4 17h10"></path>
+              </svg>
+              REST APIs
+            </div>
+
+            <!-- MongoDB -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                alt="MongoDB"
+                class="w-5 h-5 mr-3"
+              />
+              MongoDB
+            </div>
+
+            <!-- MySQL -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                alt="MySQL"
+                class="w-5 h-5 mr-3"
+              />
+              MySQL
+            </div>
+
+            <!-- SQL -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 mr-3 text-orange-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+                <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path>
+                <path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"></path>
+              </svg>
+              SQL
+            </div>
+
+            <!-- Socket.IO -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-yellow-400 font-bold">⚡</span>
+              Socket.IO
+            </div>
+
+            <!-- JWT -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-purple-400 font-bold">🔐</span>
+              JWT Authentication
+            </div>
+
+            <!-- HTML CSS -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML"
+                class="w-5 h-5 mr-3"
+              />
+              HTML & CSS
+            </div>
+
+            <!-- Linux -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                alt="Linux"
+                class="w-5 h-5 mr-3"
+              />
+              Linux
+            </div>
+
+            <!-- Bash -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
+                alt="Bash"
+                class="w-5 h-5 mr-3"
+              />
+              Bash / Shell Scripting
+            </div>
+
+            <!-- Git -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                alt="Git"
+                class="w-5 h-5 mr-3"
+              />
+              Git & GitHub
+            </div>
+
+            <!-- Postman -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                alt="Postman"
+                class="w-5 h-5 mr-3"
+              />
+              Postman
+            </div>
+
+            <!-- Linux Automation -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-cyan-400 font-bold">⚙</span>
+              Software Automation
+            </div>
+
+            <!-- Computer Networks -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-green-400 font-bold">🌐</span>
+              Computer Networks
+            </div>
+
+            <!-- OOP -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-purple-400 font-bold">◆</span>
+              Object-Oriented Programming
+            </div>
+
+            <!-- Operating Systems -->
+            <div
+              class="flex items-center bg-gray-700 text-white py-2 px-5 rounded-lg text-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 cursor-pointer shadow-sm border border-gray-600/50"
+            >
+              <span class="w-5 h-5 mr-3 text-orange-400 font-bold">▣</span>
+              Operating Systems
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-4xl font-bold text-white mb-4">
+            Let’s Build Something Meaningful
+          </h2>
+
+          <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+            I enjoy turning complex problems into simple, scalable, and reliable
+            software solutions. With a strong foundation in problem-solving and
+            hands-on experience across software development, I’m always excited
+            to work on challenging ideas, learn new technologies, and create
+            products that make a real impact.
+          </p>
+          <a
+            href="mailto:your.rtlavkush.me@gmail.com"
+            class="inline-block bg-blue-600 text-white font-bold py-4 px-10 rounded-lg text-xl transition-all duration-300 hover:bg-blue-700 hover:scale-105"
+          >
+            Let’s Connect
+          </a>
+          <div class="flex justify-center space-x-6 mt-12">
+            <a
+              href="https://github.com/rtlavkush07"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 transition-transform duration-300 hover:text-blue-400 hover:scale-125"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.2-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.7.8-1.2 1.9-1.2 3.2 0 4.6 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lav-kumar-nit/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 transition-transform duration-300 hover:text-blue-400 hover:scale-125"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer
+      class="bg-gray-800 py-6 border-t border-transparent dark:border-gray-700"
+    >
+      <footer>
+        <div class="container mx-auto px-6 text-center text-gray-500">
+          <p>© 2026 Lav Kumar. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button
+      id="scrollTopBtn"
+      class="hidden fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-blue-700 hover:scale-110 focus:outline-none z-50"
+      aria-label="Scroll to top"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <!-- Page JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Mock Data ---
+        const portfolioData = {
+          roles: ["Software Engineer"],
+        };
+
+        // --- Animated Text Logic ---
+        const animatedTextEl = document.getElementById("animated-text");
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+          const currentRole = portfolioData.roles[roleIndex];
+          if (isDeleting) {
+            animatedTextEl.textContent = currentRole.substring(
+              0,
+              charIndex - 1,
+            );
+            charIndex--;
+            if (charIndex === 0) {
+              isDeleting = false;
+              roleIndex = (roleIndex + 1) % portfolioData.roles.length;
+            }
+          } else {
+            animatedTextEl.textContent = currentRole.substring(
+              0,
+              charIndex + 1,
+            );
+            charIndex++;
+            if (charIndex === currentRole.length) {
+              isDeleting = true;
+              setTimeout(type, 2000);
+              return;
+            }
+          }
+          setTimeout(type, isDeleting ? 75 : 150);
+        }
+        type();
+
+        // --- Scroll to Top Button Logic ---
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function () {
+          if (
+            document.body.scrollTop > 400 ||
+            document.documentElement.scrollTop > 400
+          ) {
+            scrollTopBtn.style.display = "block";
+          } else {
+            scrollTopBtn.style.display = "none";
+          }
+        };
+        scrollTopBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        mobileMenuBtn.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById("moonIcon");
+        const sunIcon = document.getElementById("sunIcon");
+
+        // Helper function to update icons based on theme
+        function updateIcons(isLight) {
+          if (isLight) {
+            moonIcon.classList.add("hidden");
+            moonIcon.classList.remove("block");
+            sunIcon.classList.remove("hidden");
+            sunIcon.classList.add("block");
+          } else {
+            sunIcon.classList.add("hidden");
+            sunIcon.classList.remove("block");
+            moonIcon.classList.remove("hidden");
+            moonIcon.classList.add("block");
+          }
+        }
+
+        // Check saved preference on load
+        if (localStorage.getItem("theme") === "light") {
+          htmlElement.classList.add("light-mode");
+          updateIcons(true);
+        }
+
+        // Click event listener
+        themeToggleBtn.addEventListener("click", function () {
+          htmlElement.classList.toggle("light-mode");
+          const isLightMode = htmlElement.classList.contains("light-mode");
+
+          if (isLightMode) {
+            localStorage.setItem("theme", "light");
+            updateIcons(true);
+          } else {
+            localStorage.setItem("theme", "dark");
+            updateIcons(false);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
